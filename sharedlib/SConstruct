@@ -1,3 +1,10 @@
-SharedLibrary('mylib', 'mylib.cpp')
-Program('main.cpp', LIBS='mylib', LIBPATH='.')
+env = Environment()
+
+env['LINKFLAGS'] = '-Wl,-rpath=\'.\''
+
+sharedlib = env.SharedLibrary('mylib', 'mylib.cpp')
+
+program = env.Program('main.cpp', LIBS='mylib', 
+	LIBPATH = ['.'])
+  
 
