@@ -1,6 +1,8 @@
 env = Environment()
 
-env['LINKFLAGS'] = '-Wl,-rpath=\'.\''
+print "Environment:[" + env ['PLATFORM'] + "]"
+if env ['PLATFORM'] == "posix":
+	env['LINKFLAGS'] = '-Wl,-rpath=\'.\''
 
 sharedlib = env.SharedLibrary('mylib', 'mylib.cpp')
 
